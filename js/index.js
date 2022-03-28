@@ -32,7 +32,7 @@ $().ready( () => {
             tr.append(tdPhone);
             let tdEmail = $(`<td>${user.email}</td>`);
             tr.append(tdEmail);
-            let tdReviewer = $(`<td>${(user.isReviewer ? "Yes" : "No")}</td>`);
+            let tdReviewer = $(`<td>${(user.isReview ? "Yes" : "No")}</td>`);
             tr.append(tdReviewer); //<tr><td>1</td></tr>
             let tdAdmin = $(`<td>${(user.isAdmin ? "Yes" : "No")}</td>`);
             tr.append(tdAdmin); //<tr><td>1</td></tr>

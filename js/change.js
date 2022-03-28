@@ -1,0 +1,53 @@
+let user;
+
+$().ready(() =>{
+    console.debug("Ready!")
+
+    $("#get").on("click", () => {
+        let id = $("#xId").val();
+        display(id);
+    })
+
+    $("#save").on("click", () => {
+        save();
+    })
+}); 
+
+const display = (id) => {   
+    $.getJSON("http://localhost:11743/api/users/" + id)
+        .then((res) => {
+            user = res;
+            console.debug(res);
+            $("#iId").val(user.id);
+            $("#iUsername").val(user.username);
+            $("#iFirstname").val(user.firstname);
+            $("#iLastname").val(user.lastname);
+            $("#iPhone").val(user.phone);
+            $("#iEmail").val(user.email);
+            $("#iReviewer").prop("checked", user.isReview);
+            $("#iAdmin").prop("checked", user.isAdmin);
+        })
+        .fail((err) => { console.error(err); });
+}
+
+const save = () => {
+     let user = {
+         id: +$("#Id").val(),
+         username: $("#iUsername").val(),
+         firstname: $("#iFirstname").val(),
+         lastname: $("#iLastname").val(),
+         phone: $("#iPhone").val(),
+         email: $("#iEmail").val(),
+         isReview: $("#iReviewer").prop("checked"),
+         isAdmin: $("#iAdmin").prop("checked"),
+     } 
+     console.debug(user); 
+     $.ajax({
+         url: "http://localhost:11743/api/users/" + user.id,
+         method: "PUT",
+         data: JSON.stringify(user),
+         contentType: "application/json"
+     }) 
+        .then((res) => {console.log(res); })
+        .fail((err) => {console.error(err); });
+}
