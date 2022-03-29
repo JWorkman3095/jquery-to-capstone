@@ -1,12 +1,12 @@
 let user;
 
-$().ready(() =>{
+$().ready(() => {
     console.debug("Ready!")
 
     $("#get").on("click", () => {
         let id = $("#xId").val();
         display(id);
-    })
+    });
 
     $("#save").on("click", () => {
         save();
@@ -32,8 +32,9 @@ const display = (id) => {
 
 const save = () => {
      let user = {
-         id: +$("#Id").val(),
+         id: +$("#iId").val(),
          username: $("#iUsername").val(),
+         password: "Train@MAX",
          firstname: $("#iFirstname").val(),
          lastname: $("#iLastname").val(),
          phone: $("#iPhone").val(),
