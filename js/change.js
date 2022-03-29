@@ -1,7 +1,7 @@
 let user;
 
 $().ready(() => {
-    console.debug("Ready!")
+    console.debug("Ready!") // 
 
     $("#get").on("click", () => {
         let id = $("#xId").val();
@@ -17,7 +17,7 @@ const display = (id) => {
     $.getJSON("http://localhost:11743/api/users/" + id)
         .then((res) => {
             user = res;
-            console.debug(res);
+            console.debug(res); // displays errors
             $("#iId").val(user.id);
             $("#iUsername").val(user.username);
             $("#iFirstname").val(user.firstname);
@@ -32,7 +32,7 @@ const display = (id) => {
 
 const save = () => {
      let user = {
-         id: +$("#iId").val(),
+         id: +$("#iId").val(), // the "+" makes sure it returns a number 
          username: $("#iUsername").val(),
          password: "Train@MAX",
          firstname: $("#iFirstname").val(),
