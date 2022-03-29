@@ -1,12 +1,13 @@
 let user;
 
-$().ready(() => {
-    console.debug("Ready!") // 
+let parms;
 
-    $("#get").on("click", () => {
-        let id = $("#xId").val();
-        display(id);
-    });
+$().ready(() => {
+    console.debug("Ready!")
+
+    parms = getUrlParms();
+    console.debug("Parms", parms);
+    display(parms.id);
 
     $("#save").on("click", () => {
         save();
@@ -49,6 +50,8 @@ const save = () => {
          data: JSON.stringify(user),
          contentType: "application/json"
      }) 
-        .then((res) => {console.log(res); })
+        .then((res) => {console.log(res);
+            document.location.href = "index.html";
+        })   
         .fail((err) => {console.error(err); });
 }

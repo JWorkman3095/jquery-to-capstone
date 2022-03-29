@@ -26,6 +26,7 @@ const create = (user) => {
     })
         .then((res) => {
             console.debug(res);
+            document.location.href = "index.html";
         })
         .fail((err) => {
             console.error(err);

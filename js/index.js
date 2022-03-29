@@ -36,7 +36,10 @@ $().ready( () => {
             tr.append(tdReviewer); //<tr><td>1</td></tr>
             let tdAdmin = $(`<td>${(user.isAdmin ? "Yes" : "No")}</td>`);
             tr.append(tdAdmin); //<tr><td>1</td></tr>
+            let tdAction = $(`<td><a href="detail.html?id=${user.id}">Detail</a> | <a href="change.html?id=${user.id}">Edit</a></td>`);
+            tr.append(tdAction);
             tbody.append(tr); //puts row into the body
+            
         }
     }
 
